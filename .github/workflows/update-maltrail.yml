@@ -1,0 +1,132 @@
+name: Update Maltrail Ruleset
+
+on:
+  schedule:
+    # 每天国际标准时间 04:00 (北京时间 12:00) 执行
+    - cron: '0 4 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 必须有写权限才能推送到分支
+
+    steps:
+      - name: Checkout codebase
+        uses: actions/checkout@v4
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl jq
+
+      - name: Install sing-box
+        run: |
+          # 获取最新版本号
+          VERSION=$(curl -s "https://api.github.com/repos/SagerNet/sing-box/releases/latest" | jq -r .tag_name)
+          echo "Installing sing-box $VERSION"
+          # 下载并解压 (Linux amd64)
+          curl -sLo sing-box.tar.gz "https://github.com/SagerNet/sing-box/releases/download/${VERSION}/sing-box-${VERSION#v}-linux-amd64.tar.gz"
+          tar -xzf sing-box.tar.gz
+          # 移动二进制文件到 path
+          sudo mv sing-box-*/sing-box /usr/local/bin/
+          sing-box version
+
+      - name: Download and Compile Rules
+        run: |
+          # --- 配置 ---
+          IP_URL="https://raw.githubusercontent.com/stamparm/ipsum/refs/heads/master/levels/1.txt"
+          DOMAIN_URL="https://raw.githubusercontent.com/stamparm/aux/master/maltrail-malware-domains.txt"
+          
+          # 创建准备发布的文件夹
+          # dist-text 用于存放 text 分支的内容
+          # dist-srs  用于存放 rule-set 分支的内容
+          mkdir -p dist-text
+          mkdir -p dist-srs
+          
+          # 定义文件路径
+          # 注意：这里我们直接把下载的文件存到 dist-text 目录中，并重命名为友好的名字
+          IP_TXT="dist-text/maltrail_ip.txt"
+          DOMAIN_TXT="dist-text/maltrail_domain.txt"
+          
+          # JSON 临时文件 (不需要保留，放在根目录即可)
+          IP_JSON="maltrail_ip.json"
+          DOMAIN_JSON="maltrail_domain.json"
+          
+          # --- 1. 下载列表 ---
+          echo "⬇️ 正在下载 IP 列表..."
+          curl -sSL -o "$IP_TXT" "$IP_URL"
+          
+          echo "⬇️ 正在下载域名列表..."
+          curl -sSL -o "$DOMAIN_TXT" "$DOMAIN_URL"
+          
+          # --- 2. 处理 IP 为 JSON ---
+          echo "🔄 处理 IP 列表..."
+          # 逻辑：读取文本 -> 过滤空行 -> 封装进 sing-box 结构
+          jq -R . "$IP_TXT" | jq -s 'map(select(length > 0))' | jq '{
+            "version": 2,
+            "rules": [
+              {
+                "ip_cidr": .
+              }
+            ]
+          }' > "$IP_JSON"
+          
+          # --- 3. 处理域名为 JSON ---
+          echo "🔄 处理域名列表..."
+          jq -R . "$DOMAIN_TXT" | jq -s 'map(select(length > 0))' | jq '{
+            "version": 2,
+            "rules": [
+              {
+                "domain_suffix": .
+              }
+            ]
+          }' > "$DOMAIN_JSON"
+          
+          # --- 4. 编译为 SRS 文件 ---
+          # 编译结果直接输出到 dist-srs 目录
+          echo "🔨 正在编译 .srs 文件..."
+          sing-box rule-set compile "$IP_JSON" -o dist-srs/maltrail_ip.srs
+          sing-box rule-set compile "$DOMAIN_JSON" -o dist-srs/maltrail_domain.srs
+          
+          # --- 5. 清理 JSON 临时文件 ---
+          # TXT 文件不清理，因为要推送到 text 分支
+          echo "🧹 清理 JSON..."
+          rm "$IP_JSON" "$DOMAIN_JSON"
+          
+          echo "✅ 处理完成。"
+          echo "📂 dist-text 目录内容 (将推送至 text 分支):"
+          ls -lh dist-text/
+          echo "📂 dist-srs 目录内容 (将推送至 rule-set 分支):"
+          ls -lh dist-srs/
+      
+      # 获取当前日期
+      - name: Get Current Date
+        id: info
+        run: |
+          echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      # 推送 text 分支
+      - name: Deploy Raw Text to 'text' branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist-text
+          publish_branch: text
+          enable_jekyll: true
+          commit_message: "Github Action: update raw text lists [${{ steps.info.outputs.DATE }}]"
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+
+      # 推送 rule-set 分支
+      - name: Deploy SRS to 'rule-set' branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist-srs
+          publish_branch: rule-set
+          enable_jekyll: true
+          commit_message: "Github Action: update compiled srs ruleset [${{ steps.info.outputs.DATE }}]"
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
