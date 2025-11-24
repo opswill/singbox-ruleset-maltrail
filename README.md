@@ -2,6 +2,8 @@
 
 [![Update Maltrail Ruleset](https://github.com/opswill/singbox-ruleset-maltrail/actions/workflows/update-maltrail.yml/badge.svg)](https://github.com/opswill/singbox-ruleset-maltrail/actions/workflows/update-maltrail.yml)
 
+[English](README_en-US.md) | [中文](README.md)
+
 本项目通过 GitHub Actions 自动每日抓取 [Maltrail](https://github.com/stamparm/maltrail) 提供的恶意软件 IP 和域名列表，并将其编译为 **Sing-box** 专用的二进制规则集 (`.srs`)。
 
 使用此规则集可以在网关或设备拦截已知的恶意流量、僵尸网络和恶意软件域名。
@@ -19,16 +21,16 @@
 
 | 类型 | 文件名 | 描述 | 下载链接 (Raw) |
 | :--- | :--- | :--- | :--- |
-| **恶意 IP** | `maltrail_ip.srs` | Maltrail 识别的高风险恶意 IP (CIDR) | [点击复制链接](https://raw.githubusercontent.com/opswill/singbox-ruleset-maltrail/rule-set/maltrail_ip.srs) |
-| **恶意域名** | `maltrail_domain.srs` | Maltrail 识别的恶意软件传播域名 | [点击复制链接](https://raw.githubusercontent.com/opswill/singbox-ruleset-maltrail/rule-set/maltrail_domain.srs) |
+| **恶意 IP** | `maltrail_ip.srs` | Maltrail 识别的高风险恶意 IP (CIDR) | [右键复制链接](https://raw.githubusercontent.com/opswill/singbox-ruleset-maltrail/rule-set/maltrail_ip.srs) |
+| **恶意域名** | `maltrail_domain.srs` | Maltrail 识别的恶意软件传播域名 | [右键复制链接](https://raw.githubusercontent.com/opswill/singbox-ruleset-maltrail/rule-set/maltrail_domain.srs) |
 
 ### 2. 原始文本规则 (Text)
 *位于 `text` 分支*
 
 | 类型 | 文件名 | 描述 | 下载链接 (Raw) |
 | :--- | :--- | :--- | :--- |
-| **恶意 IP** | `maltrail_ip.txt` | 纯文本格式，每行一个 IP 或 CIDR | [点击复制链接](https://raw.githubusercontent.com/opswill/singbox-ruleset-maltrail/text/maltrail_ip.txt) |
-| **恶意域名** | `maltrail_domain.txt` | 纯文本格式，每行一个域名 | [点击复制链接](https://raw.githubusercontent.com/opswill/singbox-ruleset-maltrail/text/maltrail_domain.txt) |
+| **恶意 IP** | `maltrail_ip.txt` | 纯文本格式，每行一个 IP 或 CIDR | [右键复制链接](https://raw.githubusercontent.com/opswill/singbox-ruleset-maltrail/text/maltrail_ip.txt) |
+| **恶意域名** | `maltrail_domain.txt` | 纯文本格式，每行一个域名 | [右键复制链接](https://raw.githubusercontent.com/opswill/singbox-ruleset-maltrail/text/maltrail_domain.txt) |
 
 ---
 
@@ -74,41 +76,35 @@
         ],
         "rules": [
             {
+                "action": "sniff"
+            },
+            {
                 "type": "logical",
                 "mode": "or",
                 "rules": [
                     {
-                        "action": "sniff"
+                        "protocol": "dns"
                     },
                     {
-                        "type": "logical",
-                        "mode": "or",
-                        "rules": [
-                            {
-                                "protocol": "dns"
-                            },
-                            {
-                                "port": 53
-                            }
-                        ],
-                        "action": "hijack-dns"
-                    },
-                    {
-                        "rule_set": [
-                            "maltrail-domain"
-                        ],
-                        "action": "reject"
-                    },
-                    {
-                        "action": "resolve"
-                    },
-                    {
-                        "rule_set": [
-                            "maltrail-ip"
-                        ],
-                        "action": "reject"
+                        "port": 53
                     }
-                ]
+                ],
+                "action": "hijack-dns"
+            },
+            {
+                "rule_set": [
+                    "maltrail-domain"
+                ],
+                "action": "reject"
+            },
+            {
+                "action": "resolve"
+            },
+            {
+                "rule_set": [
+                    "maltrail-ip"
+                ],
+                "action": "reject"
             }
         ]
     }
@@ -124,6 +120,10 @@
 - Domain List: [stamparm/aux](https://raw.githubusercontent.com/stamparm/aux/master/maltrail-malware-domains.txt)
 
 感谢原项目及作者的贡献。
+
+## 🔄 更新机制
+
+更新频率：GitHub Actions 每天在 UTC 时间 04:00 (北京时间 12:00) 自动运行。
 
 ## ⚠️ 免责声明
 
