@@ -1,132 +1,327 @@
-name: Update Maltrail Ruleset
+name: Update Security Rule Sets
 
 on:
   schedule:
-    # 每天国际标准时间 04:00 (北京时间 12:00) 执行
-    - cron: '0 4 * * *'
-  workflow_dispatch: # 允许手动触发
+    # Daily at 04:17 UTC. Avoid the common top-of-hour Actions peak.
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+    inputs:
+      allow_large_drop:
+        description: 'Allow a >50% source/output count drop for this manual run'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-security-rulesets
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  IPSUM_REPO: stamparm/ipsum
+  TRAILS_REPO: stamparm/trails
+  MALTRAIL_ASSET: maltrail-malware-domains.txt
+
+  # Pin the compiler. Upgrade deliberately instead of changing SRS format
+  # implicitly during a daily data refresh.
+  SING_BOX_VERSION: v1.14.0
+
+  # v2 is sufficient for ip_cidr/domain_suffix and specifically contains
+  # the binary domain_suffix memory optimisation introduced in sing-box 1.10.
+  RULESET_VERSION: '2'
+
+  # First-run sanity floors. Subsequent runs also compare against manifest.json.
+  MIN_IPSUM_UNIQUE: '10000'
+  MIN_MALTRAIL_DOMAINS: '10000'
+  MAX_DROP_RATIO: '0.50'
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # 必须有写权限才能推送到分支
+    timeout-minutes: 20
 
     steps:
-      - name: Checkout codebase
-        uses: actions/checkout@v4
-
-      - name: Install System Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y curl jq
-
-      - name: Install sing-box
-        run: |
-          # 获取最新版本号
-          VERSION=$(curl -s "https://api.github.com/repos/SagerNet/sing-box/releases/latest" | jq -r .tag_name)
-          echo "Installing sing-box $VERSION"
-          # 下载并解压 (Linux amd64)
-          curl -sLo sing-box.tar.gz "https://github.com/SagerNet/sing-box/releases/download/${VERSION}/sing-box-${VERSION#v}-linux-amd64.tar.gz"
-          tar -xzf sing-box.tar.gz
-          # 移动二进制文件到 path
-          sudo mv sing-box-*/sing-box /usr/local/bin/
-          sing-box version
-
-      - name: Download and Compile Rules
-        run: |
-          # --- 配置 ---
-          IP_URL="https://raw.githubusercontent.com/stamparm/ipsum/refs/heads/master/levels/1.txt"
-          DOMAIN_URL="https://github.com/stamparm/trails/releases/latest/download/maltrail-malware-domains.txt"
-          
-          # 创建准备发布的文件夹
-          # dist-text 用于存放 text 分支的内容
-          # dist-srs  用于存放 rule-set 分支的内容
-          mkdir -p dist-text
-          mkdir -p dist-srs
-          
-          # 定义文件路径
-          # 注意：这里我们直接把下载的文件存到 dist-text 目录中，并重命名为友好的名字
-          IP_TXT="dist-text/maltrail_ip.txt"
-          DOMAIN_TXT="dist-text/maltrail_domain.txt"
-          
-          # JSON 临时文件 (不需要保留，放在根目录即可)
-          IP_JSON="maltrail_ip.json"
-          DOMAIN_JSON="maltrail_domain.json"
-          
-          # --- 1. 下载列表 ---
-          echo "⬇️ 正在下载 IP 列表..."
-          curl -sSL -o "$IP_TXT" "$IP_URL"
-          
-          echo "⬇️ 正在下载域名列表..."
-          curl -sSL -o "$DOMAIN_TXT" "$DOMAIN_URL"
-          
-          # --- 2. 处理 IP 为 JSON ---
-          echo "🔄 处理 IP 列表..."
-          # 逻辑：读取文本 -> 过滤空行 -> 封装进 sing-box 结构
-          jq -R . "$IP_TXT" | jq -s 'map(select(length > 0))' | jq '{
-            "version": 2,
-            "rules": [
-              {
-                "ip_cidr": .
-              }
-            ]
-          }' > "$IP_JSON"
-          
-          # --- 3. 处理域名为 JSON ---
-          echo "🔄 处理域名列表..."
-          jq -R . "$DOMAIN_TXT" | jq -s 'map(select(length > 0))' | jq '{
-            "version": 2,
-            "rules": [
-              {
-                "domain_suffix": .
-              }
-            ]
-          }' > "$DOMAIN_JSON"
-          
-          # --- 4. 编译为 SRS 文件 ---
-          # 编译结果直接输出到 dist-srs 目录
-          echo "🔨 正在编译 .srs 文件..."
-          sing-box rule-set compile "$IP_JSON" -o dist-srs/maltrail_ip.srs
-          sing-box rule-set compile "$DOMAIN_JSON" -o dist-srs/maltrail_domain.srs
-          
-          # --- 5. 清理 JSON 临时文件 ---
-          # TXT 文件不清理，因为要推送到 text 分支
-          echo "🧹 清理 JSON..."
-          rm "$IP_JSON" "$DOMAIN_JSON"
-          
-          echo "✅ 处理完成。"
-          echo "📂 dist-text 目录内容 (将推送至 text 分支):"
-          ls -lh dist-text/
-          echo "📂 dist-srs 目录内容 (将推送至 rule-set 分支):"
-          ls -lh dist-srs/
-      
-      # 获取当前日期
-      - name: Get Current Date
-        id: info
-        run: |
-          echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-
-      # 推送 text 分支
-      - name: Deploy Raw Text to 'text' branch
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Checkout repository
+        uses: actions/checkout@v6.1.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist-text
-          publish_branch: text
-          enable_jekyll: true
-          commit_message: "Github Action: update raw text lists [${{ steps.info.outputs.DATE }}]"
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          fetch-depth: 1
 
-      # 推送 rule-set 分支
-      - name: Deploy SRS to 'rule-set' branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist-srs
-          publish_branch: rule-set
-          enable_jekyll: true
-          commit_message: "Github Action: update compiled srs ruleset [${{ steps.info.outputs.DATE }}]"
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+      - name: Check runner tools
+        run: |
+          set -Eeuo pipefail
+
+          for cmd in curl jq python3 sha256sum tar git; do
+            command -v "$cmd" >/dev/null || {
+              echo "::error::Required command not found: $cmd"
+              exit 1
+            }
+          done
+
+      - name: Load previous manifest
+        run: |
+          set -Eeuo pipefail
+          mkdir -p work
+
+          if git ls-remote --exit-code --heads origin text >/dev/null 2>&1; then
+            git fetch --no-tags --depth=1 origin text
+
+            if git cat-file -e 'origin/text:manifest.json' 2>/dev/null; then
+              git show 'origin/text:manifest.json' > work/previous-manifest.json
+              echo 'Loaded previous text/manifest.json for anomaly checks.'
+            else
+              echo 'No previous manifest found; first v2 build will use absolute sanity floors only.'
+            fi
+          else
+            echo 'No text branch found; first publish will use absolute sanity floors only.'
+          fi
+
+      - name: Resolve immutable upstream snapshots
+        id: sources
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -Eeuo pipefail
+
+          api_get() {
+            curl \
+              --fail-with-body \
+              --silent --show-error \
+              --retry 5 \
+              --retry-delay 2 \
+              --retry-all-errors \
+              --connect-timeout 15 \
+              --max-time 60 \
+              -H 'Accept: application/vnd.github+json' \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H 'X-GitHub-Api-Version: 2026-03-10' \
+              "$1"
+          }
+
+          # IPsum: resolve master to a commit first so all levels come from
+          # one immutable ipsum.txt snapshot.
+          IPSUM_JSON="$(api_get "https://api.github.com/repos/${IPSUM_REPO}/commits/master")"
+          IPSUM_SHA="$(jq -er '.sha' <<<"$IPSUM_JSON")"
+          IPSUM_URL="https://raw.githubusercontent.com/${IPSUM_REPO}/${IPSUM_SHA}/ipsum.txt"
+
+          # Maltrail Trails: resolve latest release to its concrete asset URL.
+          TRAILS_JSON="$(api_get "https://api.github.com/repos/${TRAILS_REPO}/releases/latest")"
+          TRAILS_TAG="$(jq -er 'select(.draft == false and .prerelease == false) | .tag_name' <<<"$TRAILS_JSON")"
+          TRAILS_URL="$(jq -er --arg name "$MALTRAIL_ASSET" '.assets[] | select(.name == $name) | .browser_download_url' <<<"$TRAILS_JSON")"
+          TRAILS_DIGEST="$(jq -r --arg name "$MALTRAIL_ASSET" '.assets[] | select(.name == $name) | (.digest // "")' <<<"$TRAILS_JSON")"
+
+          # sing-box: intentionally pinned stable compiler.
+          SING_BOX_JSON="$(api_get "https://api.github.com/repos/SagerNet/sing-box/releases/tags/${SING_BOX_VERSION}")"
+          jq -e 'select(.draft == false and .prerelease == false)' <<<"$SING_BOX_JSON" >/dev/null
+
+          SING_BOX_ASSET="sing-box-${SING_BOX_VERSION#v}-linux-amd64.tar.gz"
+          SING_BOX_URL="$(jq -er --arg name "$SING_BOX_ASSET" '.assets[] | select(.name == $name) | .browser_download_url' <<<"$SING_BOX_JSON")"
+          SING_BOX_DIGEST="$(jq -r --arg name "$SING_BOX_ASSET" '.assets[] | select(.name == $name) | (.digest // "")' <<<"$SING_BOX_JSON")"
+
+          {
+            echo "ipsum_sha=$IPSUM_SHA"
+            echo "ipsum_url=$IPSUM_URL"
+            echo "trails_tag=$TRAILS_TAG"
+            echo "trails_url=$TRAILS_URL"
+            echo "trails_digest=$TRAILS_DIGEST"
+            echo "sing_box_url=$SING_BOX_URL"
+            echo "sing_box_digest=$SING_BOX_DIGEST"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "IPsum commit:   $IPSUM_SHA"
+          echo "Trails release: $TRAILS_TAG"
+          echo "sing-box:       $SING_BOX_VERSION"
+
+      - name: Download and verify inputs
+        env:
+          IPSUM_URL: ${{ steps.sources.outputs.ipsum_url }}
+          TRAILS_URL: ${{ steps.sources.outputs.trails_url }}
+          TRAILS_DIGEST: ${{ steps.sources.outputs.trails_digest }}
+          SING_BOX_URL: ${{ steps.sources.outputs.sing_box_url }}
+          SING_BOX_DIGEST: ${{ steps.sources.outputs.sing_box_digest }}
+        run: |
+          set -Eeuo pipefail
+
+          download() {
+            local url="$1"
+            local output="$2"
+
+            curl \
+              --fail \
+              --location \
+              --silent --show-error \
+              --retry 5 \
+              --retry-delay 2 \
+              --retry-all-errors \
+              --connect-timeout 15 \
+              --max-time 180 \
+              --output "$output" \
+              "$url"
+
+            test -s "$output" || {
+              echo "::error::Downloaded file is empty: $url"
+              exit 1
+            }
+          }
+
+          verify_digest() {
+            local file="$1"
+            local digest="$2"
+
+            if [[ -z "$digest" || "$digest" == 'null' ]]; then
+              echo "::warning::No GitHub SHA-256 digest available for $(basename "$file")"
+              return 0
+            fi
+
+            if [[ ! "$digest" =~ ^sha256:[0-9a-fA-F]{64}$ ]]; then
+              echo "::error::Unsupported digest format: $digest"
+              exit 1
+            fi
+
+            echo "${digest#sha256:}  $file" | sha256sum --check --status || {
+              echo "::error::SHA-256 verification failed: $file"
+              exit 1
+            }
+          }
+
+          download "$IPSUM_URL" work/ipsum.txt
+          download "$TRAILS_URL" work/maltrail-malware-domains.upstream.txt
+          download "$SING_BOX_URL" work/sing-box.tar.gz
+
+          verify_digest work/maltrail-malware-domains.upstream.txt "$TRAILS_DIGEST"
+          verify_digest work/sing-box.tar.gz "$SING_BOX_DIGEST"
+
+      - name: Install sing-box compiler
+        run: |
+          set -Eeuo pipefail
+
+          mkdir -p "$RUNNER_TEMP/sing-box" "$RUNNER_TEMP/bin"
+          tar -xzf work/sing-box.tar.gz -C "$RUNNER_TEMP/sing-box" --strip-components=1
+          install -m 0755 "$RUNNER_TEMP/sing-box/sing-box" "$RUNNER_TEMP/bin/sing-box"
+          "$RUNNER_TEMP/bin/sing-box" version
+
+      - name: Build and validate rule sets
+        env:
+          IPSUM_SHA: ${{ steps.sources.outputs.ipsum_sha }}
+          TRAILS_TAG: ${{ steps.sources.outputs.trails_tag }}
+          ALLOW_LARGE_DROP: ${{ github.event_name == 'workflow_dispatch' && inputs.allow_large_drop == true }}
+        run: |
+          set -Eeuo pipefail
+
+          rm -rf dist-text dist-srs build
+          mkdir -p build
+
+          extra_args=()
+
+          if [[ -s work/previous-manifest.json ]]; then
+            extra_args+=(--previous-manifest work/previous-manifest.json)
+          fi
+
+          if [[ "$ALLOW_LARGE_DROP" == 'true' ]]; then
+            extra_args+=(--allow-large-drop)
+          fi
+
+          python3 .github/scripts/build_rules.py \
+            --ipsum work/ipsum.txt \
+            --domains work/maltrail-malware-domains.upstream.txt \
+            --sing-box "$RUNNER_TEMP/bin/sing-box" \
+            --text-dir dist-text \
+            --srs-dir dist-srs \
+            --ipsum-repo "$IPSUM_REPO" \
+            --ipsum-sha "$IPSUM_SHA" \
+            --trails-repo "$TRAILS_REPO" \
+            --trails-release "$TRAILS_TAG" \
+            --trails-asset "$MALTRAIL_ASSET" \
+            --sing-box-version "$SING_BOX_VERSION" \
+            --ruleset-version "$RULESET_VERSION" \
+            --min-ipsum-unique "$MIN_IPSUM_UNIQUE" \
+            --min-domains "$MIN_MALTRAIL_DOMAINS" \
+            --max-drop-ratio "$MAX_DROP_RATIO" \
+            --summary build/summary.md \
+            "${extra_args[@]}"
+
+          cat build/summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Prepare and publish generated branches
+        env:
+          IPSUM_SHA: ${{ steps.sources.outputs.ipsum_sha }}
+          TRAILS_TAG: ${{ steps.sources.outputs.trails_tag }}
+        run: |
+          set -Eeuo pipefail
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          TEXT_CHANGED=0
+          SRS_CHANGED=0
+          SHORT_IPSUM="${IPSUM_SHA:0:12}"
+          COMMIT_MESSAGE="Update rulesets: IPsum ${SHORT_IPSUM}, Trails ${TRAILS_TAG}"
+
+          prepare_branch() {
+            local remote_branch="$1"
+            local source_dir="$2"
+            local local_branch="publish-${remote_branch}"
+            local worktree="$RUNNER_TEMP/${local_branch}"
+
+            rm -rf "$worktree"
+
+            if git ls-remote --exit-code --heads origin "$remote_branch" >/dev/null 2>&1; then
+              git fetch --no-tags --depth=1 origin "$remote_branch"
+              git worktree add -b "$local_branch" "$worktree" "origin/$remote_branch"
+            else
+              git worktree add --detach "$worktree" HEAD
+              git -C "$worktree" switch --orphan "$local_branch"
+            fi
+
+            find "$worktree" \
+              -mindepth 1 -maxdepth 1 \
+              ! -name '.git' \
+              -exec rm -rf {} +
+
+            cp -a "$GITHUB_WORKSPACE/$source_dir/." "$worktree/"
+            git -C "$worktree" add -A
+
+            if git -C "$worktree" diff --cached --quiet; then
+              echo "No changes for branch '$remote_branch'."
+              git worktree remove --force "$worktree"
+              return 1
+            fi
+
+            git -C "$worktree" commit -m "$COMMIT_MESSAGE"
+            git worktree remove --force "$worktree"
+          }
+
+          if prepare_branch text dist-text; then
+            TEXT_CHANGED=1
+          fi
+
+          if prepare_branch rule-set dist-srs; then
+            SRS_CHANGED=1
+          fi
+
+          refs=()
+          (( TEXT_CHANGED )) && refs+=("publish-text:refs/heads/text")
+          (( SRS_CHANGED )) && refs+=("publish-rule-set:refs/heads/rule-set")
+
+          if (( ${#refs[@]} == 0 )); then
+            echo 'No generated content changed; nothing to publish.'
+            echo '### Publish result' >> "$GITHUB_STEP_SUMMARY"
+            echo '- No branch changes.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          # GitHub supports atomic multi-ref pushes: either all changed generated
+          # branches move, or none do.
+          git push --atomic origin "${refs[@]}"
+
+          {
+            echo
+            echo '### Publish result'
+            (( TEXT_CHANGED )) && echo '- Updated `text` branch.'
+            (( SRS_CHANGED )) && echo '- Updated `rule-set` branch.'
+          } >> "$GITHUB_STEP_SUMMARY"
