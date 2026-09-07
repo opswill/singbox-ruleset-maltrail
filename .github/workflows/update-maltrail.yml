@@ -37,7 +37,7 @@ jobs:
         run: |
           # --- 配置 ---
           IP_URL="https://raw.githubusercontent.com/stamparm/ipsum/refs/heads/master/levels/1.txt"
-          DOMAIN_URL="https://raw.githubusercontent.com/stamparm/aux/master/maltrail-malware-domains.txt"
+          DOMAIN_URL="https://github.com/stamparm/trails/releases/latest/download/maltrail-malware-domains.txt"
           
           # 创建准备发布的文件夹
           # dist-text 用于存放 text 分支的内容
