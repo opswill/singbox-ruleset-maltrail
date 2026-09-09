@@ -6,31 +6,31 @@ Levels 1-8 are generated from one pinned `ipsum.txt` snapshot. Duplicate IPs are
 
 | Level | Unique IPs | Published IP/CIDR entries | Entry reduction |
 |---:|---:|---:|---:|
-| 1 | 131,282 | 101,958 | 22.34% |
-| 2 | 33,281 | 25,544 | 23.25% |
-| 3 | 17,689 | 13,275 | 24.95% |
-| 4 | 8,274 | 6,647 | 19.66% |
-| 5 | 3,666 | 3,107 | 15.25% |
-| 6 | 1,203 | 1,029 | 14.46% |
-| 7 | 374 | 319 | 14.71% |
-| 8 | 89 | 81 | 8.99% |
+| 1 | 131,962 | 102,696 | 22.18% |
+| 2 | 31,923 | 24,595 | 22.96% |
+| 3 | 16,086 | 12,711 | 20.98% |
+| 4 | 7,558 | 6,394 | 15.40% |
+| 5 | 3,325 | 2,894 | 12.96% |
+| 6 | 1,182 | 1,002 | 15.23% |
+| 7 | 384 | 321 | 16.41% |
+| 8 | 116 | 99 | 14.66% |
 
 ## Maltrail malware domains
 
 The source is the official `maltrail-malware-domains.txt` derived from Maltrail Trails `malware/` content.
 
-- Raw rows: 971,701
-- Unique domains after exact de-duplication: 971,701
+- Raw rows: 972,396
+- Unique domains after exact de-duplication: 972,396
 - Exact duplicate rows removed: 0
-- Redundant child suffixes removed: 138,759
-- Published `domain_suffix` entries: 832,942
+- Redundant child suffixes removed: 138,849
+- Published `domain_suffix` entries: 833,547
 
 Suffix compaction is label-aware: a child such as `a.example.com` is removed only when `example.com` itself exists in the source list. A string such as `badexample.com` is not considered a child of `example.com`.
 
 ## Source snapshots
 
-- IPsum commit: `6ea2a9e0d9d15486a1dc5a89e8b14edbf5f98fb4`
-- Maltrail Trails release: `content-20260907-2202`
+- IPsum commit: `c0e606e6a12c9e08c1708422f790884a4046c1fd`
+- Maltrail Trails release: `content-20260908-2152`
 - sing-box source rule-set version: `2`
 
 ## Files
