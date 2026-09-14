@@ -3,7 +3,7 @@ name: Update Security Rule Sets
 on:
   schedule:
     # Daily at 04:17 UTC. Avoid the common top-of-hour Actions peak.
-    - cron: '17 4 * * *'
+    - cron: '50 22 * * *'
   workflow_dispatch:
     inputs:
       allow_large_drop:
