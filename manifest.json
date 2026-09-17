@@ -3,122 +3,122 @@
     "exact_duplicates_removed": 0,
     "levels": {
       "1": {
-        "published_entries": 90589,
-        "represented_ips": 118113,
-        "source_unique_ips": 118113,
+        "published_entries": 93264,
+        "represented_ips": 122565,
+        "source_unique_ips": 122565,
         "srs_file": "ipsum-level-1.srs",
-        "srs_sha256": "b71a80c829fe189605ec6adcb5eb60360d52d19100a7e4fbc6460179c154c49e",
-        "srs_size": 247672,
+        "srs_sha256": "c183190c4a14702c7be78c41ad25abc2789fa42f4a2616ee454e9ffb9cf3241b",
+        "srs_size": 253921,
         "text_file": "ipsum-level-1.txt",
-        "text_sha256": "8d48b709a62a4f89f72291ac4937ea4010e9591aa844d426660118b0296231b4",
-        "text_size": 1296049
+        "text_sha256": "84dbe08efa7b2707c37baa573b2d2d85c65348eded895d50a91cda3ed2bf1442",
+        "text_size": 1333290
       },
       "2": {
-        "published_entries": 24417,
-        "represented_ips": 32142,
-        "source_unique_ips": 32142,
+        "published_entries": 25801,
+        "represented_ips": 33458,
+        "source_unique_ips": 33458,
         "srs_file": "ipsum-level-2.srs",
-        "srs_sha256": "02cb3b8fa67097f4e089c6b28e96193d7defa8b6654d6179e18d153669b40c84",
-        "srs_size": 67764,
+        "srs_sha256": "630f4bbaa37b074a25f6e138f5f733cc724afb8bff8f41502a518995f6b44388",
+        "srs_size": 71746,
         "text_file": "ipsum-level-2.txt",
-        "text_sha256": "b54d37aa156b48a168a06c55292f3e7a6c2b34c73ad13022ad420520371fd4ab",
-        "text_size": 352162
+        "text_sha256": "b7dd2332f9d3139cb3f81455a5a3518615f921fc78fb9b461864155adc70626f",
+        "text_size": 371869
       },
       "3": {
-        "published_entries": 12822,
-        "represented_ips": 16604,
-        "source_unique_ips": 16604,
+        "published_entries": 13062,
+        "represented_ips": 16772,
+        "source_unique_ips": 16772,
         "srs_file": "ipsum-level-3.srs",
-        "srs_sha256": "243a00b3cebe65678b351484ff3e17f0625ff4ad685c19d74ea0a839396339ea",
-        "srs_size": 36382,
+        "srs_sha256": "dfe85aff44045257734135588268c28927dad47e562758b06d95df80fb1b35d8",
+        "srs_size": 37453,
         "text_file": "ipsum-level-3.txt",
-        "text_sha256": "5febcfab3446a466dd538bde5ed0379226e370de298637a67ca4869680ecc86e",
-        "text_size": 186368
+        "text_sha256": "d860807f898fb99c7f085296703422edc12eec5f26d056a5292d7ee2b140c80a",
+        "text_size": 190022
       },
       "4": {
-        "published_entries": 6528,
-        "represented_ips": 7974,
-        "source_unique_ips": 7974,
+        "published_entries": 6659,
+        "represented_ips": 8261,
+        "source_unique_ips": 8261,
         "srs_file": "ipsum-level-4.srs",
-        "srs_sha256": "2b56deecd6850c7554aa695d5e9c6f1227bb7a5e01a8eae4f961ab070a0dd506",
-        "srs_size": 19528,
+        "srs_sha256": "d69222223317b48e8eb98da62a80f6fee34a8714fe8cb2296920df2eb1d61003",
+        "srs_size": 19906,
         "text_file": "ipsum-level-4.txt",
-        "text_sha256": "c2999e0afc73f3c69d8cfe051321dd440378e7817dcd2c588161f9328e50fa1e",
-        "text_size": 95113
+        "text_sha256": "fb8084d0c8d7985ecc26a25b0be3e44483ca8603313fa1df827204c95a1a6322",
+        "text_size": 97185
       },
       "5": {
-        "published_entries": 2237,
-        "represented_ips": 2865,
-        "source_unique_ips": 2865,
+        "published_entries": 3410,
+        "represented_ips": 4117,
+        "source_unique_ips": 4117,
         "srs_file": "ipsum-level-5.srs",
-        "srs_sha256": "109f3d874b62c3e6866eb6d7556f2c3a072084f7d836d0bb70c9e8df71dda2a1",
-        "srs_size": 6657,
+        "srs_sha256": "6b96b816241ad7c296cb75b0ca7a579b3823ad9d22d6623137e30b7fc12b051d",
+        "srs_size": 10555,
         "text_file": "ipsum-level-5.txt",
-        "text_sha256": "282616356c72fe5cd28b28e671634fc2f28f6a551ed3b64b511d1b22baae3684",
-        "text_size": 32695
+        "text_sha256": "fcaa304a13582721a330b5dfe19b3153e572705c96f75c16cd3a248bd08b355b",
+        "text_size": 49649
       },
       "6": {
-        "published_entries": 829,
-        "represented_ips": 1076,
-        "source_unique_ips": 1076,
+        "published_entries": 1409,
+        "represented_ips": 1724,
+        "source_unique_ips": 1724,
         "srs_file": "ipsum-level-6.srs",
-        "srs_sha256": "164f39d8a7a5c504cb87332d4fa1f113ce8d891e3045b3de5204c53f7a9e9517",
-        "srs_size": 2444,
+        "srs_sha256": "3af342c054f52bdbe0703fa7c18bbcca871ae0de081f1c2c5d3782f72a311de3",
+        "srs_size": 4442,
         "text_file": "ipsum-level-6.txt",
-        "text_sha256": "2e9eddd8b8751ffdbf7569e2e2cf46e444d73f2bb9c26eb26f5bc35c7ee2b3b1",
-        "text_size": 12122
+        "text_sha256": "6643e050cb94f5708b7cfc292845751ca6c9ff1bc216022b15f00189fbdb6726",
+        "text_size": 20545
       },
       "7": {
-        "published_entries": 296,
-        "represented_ips": 388,
-        "source_unique_ips": 388,
+        "published_entries": 490,
+        "represented_ips": 593,
+        "source_unique_ips": 593,
         "srs_file": "ipsum-level-7.srs",
-        "srs_sha256": "945170b18854d1e2c6597fd4b14a62851e290d104dc6d6ba1e2b7c0274f65be1",
-        "srs_size": 907,
+        "srs_sha256": "85feaf7cb5037db2eb8a5f15ea5063bf2adee890a26a20a126ca3c637d28d5c8",
+        "srs_size": 1541,
         "text_file": "ipsum-level-7.txt",
-        "text_sha256": "f9bf99298001f88fbc6bec2030832d9fcf98320f5b3fb6658e81fd2825b599f3",
-        "text_size": 4314
+        "text_sha256": "5b5c178f79399e2a4b8458cfcc4d83e7f4a2d63fc54fcea39d383c34f32c1f56",
+        "text_size": 7144
       },
       "8": {
-        "published_entries": 71,
-        "represented_ips": 74,
-        "source_unique_ips": 74,
+        "published_entries": 150,
+        "represented_ips": 166,
+        "source_unique_ips": 166,
         "srs_file": "ipsum-level-8.srs",
-        "srs_sha256": "cbf5df00c19cf198e9aa6955c63e2f3486017edd79061b6b2024b8912bd4f556",
-        "srs_size": 295,
+        "srs_sha256": "380980bd6d9a2c5a29f6eb067d6811f357fa6782f745283b77dfa5ad42a81935",
+        "srs_size": 504,
         "text_file": "ipsum-level-8.txt",
-        "text_sha256": "1b801938ee85ca89120addc0ce2a8de59603aa3ef2f4f047a5733c9f8fb75d5f",
-        "text_size": 1030
+        "text_sha256": "bf3e3eee6d11c6e7dfc9c731a0efae3709074705f057ee8890d75ee36c2d0467",
+        "text_size": 2145
       }
     },
-    "raw_rows": 118113,
-    "unique_ips": 118113
+    "raw_rows": 122565,
+    "unique_ips": 122565
   },
   "maltrail_malware_domains": {
     "exact_duplicates_removed": 0,
-    "published_domain_suffixes": 845307,
-    "raw_rows": 984796,
+    "published_domain_suffixes": 849830,
+    "raw_rows": 989357,
     "srs_file": "maltrail-malware-domains.srs",
-    "srs_sha256": "d0f1856d3fcf8e090012790e8567941619e4b2014fdca3527dfa8a2f82d27050",
-    "srs_size": 5433377,
-    "suffix_redundant_removed": 139489,
+    "srs_sha256": "09d03cccc800668edd933fb480b166878cc9657a5d93453b219ab7449b154e21",
+    "srs_size": 5453582,
+    "suffix_redundant_removed": 139527,
     "text_file": "maltrail-malware-domains.txt",
-    "text_sha256": "5bddbe44253868971397f9d5a0e15ba3fcdd0aefb5fcc42d65e7ed9cdc707264",
-    "text_size": 16037935,
-    "unique_domains": 984796
+    "text_sha256": "e0b6a567dc996c45a77e3b7cb8798661c135c5849142bdf715a33a4d3af1f59b",
+    "text_size": 16124246,
+    "unique_domains": 989357
   },
   "ruleset_source_format_version": 2,
   "sources": {
     "ipsum": {
-      "commit": "edcc22a3318e4965a95667abcc35f9b3644dd4d3",
+      "commit": "d1de48fae2ad63cb854c9fcf9bf75a2544f07ee1",
       "repository": "stamparm/ipsum",
-      "upstream_sha256": "ddd00c637aebd742366301f51d66ed78d89bda90f10e43f391af0ada8cab6f37"
+      "upstream_sha256": "a001f45114ebb8ce42f4394986773e118bd384f079244c6cb55dbf279aa450c5"
     },
     "maltrail_trails": {
       "asset": "maltrail-malware-domains.txt",
-      "release": "content-20260915-2214",
+      "release": "content-20260916-2211",
       "repository": "stamparm/trails",
-      "upstream_sha256": "3829a9fd5182b2e9bcc4c7473e4092b21fbab896869ba3af0659aab56d274bf2"
+      "upstream_sha256": "9e1640156690d71f50e91aa15d8f30b0ae936f3c33ce3ab73423405c7332fce1"
     },
     "sing_box": {
       "version": "v1.14.0"
