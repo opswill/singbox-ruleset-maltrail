@@ -10858,6 +10858,7 @@
 185-196-10-227.cprapid.com
 185-196-8-60.cprapid.com
 185-212-47-84.cprapid.com
+185-213-240-179.cprapid.com
 185-216-143-74.cprapid.com
 185-235-128-217.netherlands-2.vps.ac
 185-38-142-128.cprapid.com
@@ -32453,6 +32454,7 @@
 60802.cc
 60823174.xyz
 6084217.xyz
+6088-14620.bacloud.info
 608901cm.nyashland.top
 60894m.dccr.ru
 608965959.retarus.ru
@@ -47986,6 +47988,7 @@ aa9aiaoaaiasdf.cfd
 aaa-auto-sales.com
 aaa-bbb-xnibhcfkew.cn-shanghai.fcapp.run
 aaa-canada.pages.dev
+aaa-life.claims
 aaa.104-168-101-27.cprapid.com
 aaa.47521212.com
 aaa.594.bz
@@ -56799,6 +56802,7 @@ add-lcz-whatsapp.hl.cn
 add-lets.gl.at.ply.gg
 add-lgp-whatsapp.hl.cn
 add-lza-whatsapp.hl.cn
+add-mfa.com
 add-mfd-whatsapp.hl.cn
 add-mhs-whatsapp.hl.cn
 add-nue-whatsapp.hl.cn
@@ -103610,6 +103614,7 @@ athena.bingo
 athena.dataval.munic.io
 athena.francecentral.cloudapp.azure.com
 athena.protimas.ru
+athena.report
 athena.rip
 athena.xyz
 athenabeicoxjr2l.onion.link
@@ -121455,6 +121460,7 @@ baxqip.info
 baxqop.info
 baxrate.online
 baxsbot.tk
+baxter.claims
 baxter.dedspac.ru
 baxter.ru.com
 baxtonescale.click
@@ -133084,6 +133090,7 @@ binance-mw.hl.cn
 binance-okta.com
 binance-pi.apps-desktop-download.com
 binance-qy.hl.cn
+binance-report.com
 binance-rewardcenter.xyz
 binance-sso.com
 binance-tradezone.com
@@ -133099,6 +133106,7 @@ binance.ddnsking.com
 binance.istanbul
 binance.offerup.digital
 binance.pk6gb3.top
+binance.report
 binance.serveftp.com
 binancealliancesintro.com
 binanceapp-pc.com
@@ -138375,10 +138383,12 @@ block-monthly.gl.at.ply.gg
 block-mosaic.com
 block-producer.blacklabel.exchange
 block-releases.gl.at.ply.gg
+block-report.com
 block-sso.com
 block-vision.xyz
 block.health-degree.com
 block.nblogoflink.mydns.bz
+block.report
 block.safeservice.cx
 block.setinfo.kro.kr
 block.usermemberblg.freeddns.org
@@ -140387,6 +140397,7 @@ bmnyahgg.com
 bmo-canada-secure-onlinealert.com
 bmo-report.com
 bmo-whatsapp.hl.cn
+bmo.report
 bmo7csaes6.sbs
 bmoaaibayg.sa.com
 bmofinancial.org
@@ -171169,6 +171180,7 @@ cdn.qq2s.com
 cdn.qqebna.icu
 cdn.qqetgbe.icu
 cdn.qregbrb.icu
+cdn.quickdelivr.com
 cdn.qzealormiio.cfd
 cdn.r0o4j18d.pl
 cdn.rabbak.xyz
@@ -173460,6 +173472,7 @@ cendryalovo.com
 cendrylosian.com
 cendryomira.sbs
 cendryosaval.com
+cendyn.claims
 cene.cc
 ceneecert.com
 cenegopivorsystems16.click
@@ -182379,6 +182392,7 @@ chroame-google.hl.cn
 chroatolcore.click
 chroatolmor.digital
 chrobatxo.click
+chrobinson.add-mfa.com
 chrocustomreversal.com
 chrocustumapp.com
 chroeminstant.com
@@ -186361,11 +186375,19 @@ claimreward.online
 claimrewards-cbinterest.com
 claimrreward.com
 claims-bigpump.pages.dev
+claims-booking.com
+claims-cloudbeds.com
+claims-crunchyroll.com
 claims-dept.com
+claims-gaig.com
+claims-lawa.com
 claims-matic.com
+claims-mckesson.com
 claims-movement-network.com
+claims-paychex.com
 claims-portal-celsius.network
 claims-renzo.xyz
+claims-sofi.com
 claims.lol
 claims.scroll.su
 claims.sorawo.ru
@@ -202685,6 +202707,7 @@ concordant-renters.click
 concordarabuluculuk.xyz
 concorde.elitoras.ru
 concordforgevo.digital
+concordhotels.claims
 concordiaeefde.nl
 concordnetworking.com
 concordpulse.click
@@ -304068,6 +304091,7 @@ expectum.top
 expedezivo.click
 expedia.aplicativo-br.com
 expediagroup-servicenow.com
+expediagroup.claims
 expediency-organise.icu
 expedient-unmarried.click
 expediteur.no-ip.org
@@ -309676,6 +309700,7 @@ fallnovember.net
 falloffstack.click
 falloitalbar.store
 fallondean44.homes
+fallonhealth.claims
 fallopen.net
 fallopen.ru
 fallotbjgj.ru
@@ -339586,6 +339611,7 @@ ftp.naksgroup.ba
 ftp.nasesjeme.com
 ftp.neorejuvenation.net
 ftp.netwindws.com
+ftp.neukirchuzaouth.com
 ftp.newsdata.jkub.com
 ftp.newsextensionlella.online
 ftp.newsonlinesite.com
@@ -423720,6 +423746,7 @@ imap.optimization-marketing.com
 imap.pamik.cf
 imap.rajshreewin.com
 imap.rephaseon.com
+imap.schwab-005.sbs
 imap.shuyingbaofu.com
 imap.spatialdatacloud.com
 imap.surfmail.cloud
@@ -431429,6 +431456,7 @@ inspirationizable.com
 inspirationseekertop.top
 inspirationsquellenerkunden.com
 inspire.azureedge.net
+inspire.report
 inspirecollege.co.uk
 inspired.no-ip.org
 inspiredaroundvision.biz
@@ -460212,6 +460240,7 @@ kagaicuggacuoaoe.xyz
 kagami-adam.com
 kagamiprocam.art
 kagamoaoperations.digital
+kagankivitechnologies.info
 kagaqebiwaconsulting.click
 kagasorilumapvia.com
 kagavei6.buzz
@@ -463879,6 +463908,7 @@ kbpaovmeuedhtyu.top
 kbpbwzrpa.com
 kbpjaudvjhrnebn.com
 kbpsorjbus6.pw
+kbr.add-mfa.com
 kbracketba.shop
 kbrbedcllpnf.pw
 kbreedfin.fun
@@ -466934,6 +466964,7 @@ key-statistic.com
 key-stats.com
 key-stunning.gl.at.ply.gg
 key-web-whatsapp.net.cn
+key.add-mfa.com
 key.dedspac.ru
 key.getswift.gg
 key.getswift.vip
@@ -477546,6 +477577,7 @@ kraken.group-meeting.online
 kraken.group-meeting.team
 kraken.livehiringpro.com
 kraken.mom
+kraken.report
 kraken.team-meet.online
 kraken.video-meeting.team
 kraken11op.ru
@@ -506479,6 +506511,7 @@ louty.dedspac.ru
 louty.virosat.ru
 louve.zapto.org
 louverstack.click
+louvertine.com
 louvgamersmp1.ddnsgeek.com
 louvre-event.com
 louvre-tickets.digital
@@ -522473,6 +522506,7 @@ mail.sc4rzor6192.universe.wf
 mail.scalfosofs.com
 mail.scarlet-analytics.com
 mail.scf24.de
+mail.schwab-005.sbs
 mail.scientific.pk
 mail.sco.gov.pk.hilsa.online
 mail.sco.gov.pk.pujfjue003hmdhfh99ppjdflsdqwlkls.g0v-pk.net
@@ -529101,6 +529135,7 @@ marseflow.digital
 marsefx.top
 marseille64.jumpingcrab.com
 marsera.click
+marsh-claims.com
 marsh.dedspac.ru
 marsh.ulitron.ru
 marsh11iwildlife.top
@@ -535360,6 +535395,7 @@ medtechgroups.com
 medtestanswers.info
 medthermography.com
 medtn99.ddns.net
+medtronic.claims
 medudice.cfd
 medukeborsolutions.digital
 medulaquant.click
@@ -569379,6 +569415,7 @@ myboxofficebox.com
 myboxs.navers.tech
 myboyfornow.bond
 myboyfornow.pics
+mybrainer.com
 mybravo.xyz
 mybrightfuturefinancial.com
 mybrightidea.co
@@ -586036,6 +586073,7 @@ neujswqimiiyqyr.com
 neuk.dedspac.ru
 neuka.top
 neukframe.digital
+neukirchuzaouth.com
 neukoo.top
 neukoria.click
 neukpixel.digital
@@ -613769,6 +613807,8 @@ nutricenode.digital
 nutricestudioco.click
 nutricevision.digital
 nutricion.xyz
+nutricionvitalidadqw.info
+nutricionvitalidadsn.info
 nutrientaivo.click
 nutrifunda.com
 nutrify.xyz
@@ -627374,6 +627414,7 @@ onetouchauthentication.club
 onetouchdlrect.net
 onetouchsso.com
 onetreeinheaven.com
+onetrust.add-mfa.com
 onetrustfocus.digital
 onetrustmacro.sbs
 onetrustnova.click
@@ -630197,6 +630238,7 @@ openbeakquantum.click
 openbeaktensor.digital
 openbeakvanta.digital
 openbetank.mypi.co
+openbg.at
 openbids-dol.com
 openbinders.com
 openblazenix.forum
@@ -630300,6 +630342,7 @@ opendocument.infinityfreeapp.com
 opendocuments.infinityfreeapp.com
 opendomain.lyamore-metal.com
 opendomain.taiwantradeglobal.com
+opendoor.report
 opendoors.myftp.org
 opendoors.top
 opendospot.mypi.co
@@ -631657,6 +631700,7 @@ optimizedimghosting.com
 optimizedperson.com
 optimizeeltd.duckdns.org
 optimizeflowcenter.forum
+optimizely.add-mfa.com
 optimizeperformancehub.forum
 optimizercache.com
 optimizespaceapp.com
@@ -632729,6 +632773,7 @@ orbit-union365.digital
 orbit-xstack.digital
 orbit.dedspac.ru
 orbit.leonardis.ru
+orbit.report
 orbit.vivawebhost.com
 orbit.xin
 orbit101-mesh.pics
@@ -657184,6 +657229,7 @@ pfive5sb.top
 pfive5sr.top
 pfive5vs.top
 pfizer-careers.net
+pfizer.add-mfa.com
 pfizer.eastus.cloudapp.azure.com
 pfizer.space
 pfizerpoll.com
@@ -672610,6 +672656,7 @@ pop.reservations.bookings-hotels.com
 pop.rnp-rosneft.ru
 pop.ros-razvitie.ru
 pop.satellitebbs.com
+pop.schwab-005.sbs
 pop.ssgcc.shop
 pop.staycools.net
 pop.symanteconline.net
@@ -672644,6 +672691,7 @@ pop3.infosupports.com
 pop3.jumaikj.com
 pop3.navermail.net
 pop3.ord-greenhouse.com
+pop3.schwab-005.sbs
 pop3.shuyingbaofu.com
 pop3.woodinception.com
 pop3.wordmoss.com
@@ -682228,6 +682276,7 @@ privatedns.b3tter.online
 privatedns.buildmedic.com
 privatedns.huishengzhang.com
 privatedns.jiahouse.com
+privatedns.kagankivitechnologies.info
 privatedns.no-ip.biz
 privatedns.uhdengine.com
 privatedownload256.club
@@ -703109,6 +703158,7 @@ quickcrate.cyou
 quickdash.info
 quickdashx.info
 quickdatinghub.vip
+quickdelivr.com
 quickdesid.live
 quickdesk.mypi.co
 quickdonet.mypi.co
@@ -712481,6 +712531,7 @@ rbhdys.top
 rbhgkqyj.icu
 rbhhelp.live
 rbhyt6d4.niponshop.com
+rbi-claims.com
 rbi-opros.top
 rbi.boletuso.ru
 rbi.dedspac.ru
@@ -712603,6 +712654,7 @@ rbx-corp.com
 rbx-hr.com
 rbx-servicedesk.com
 rbx.okta.bio
+rbx.report
 rbxbkz.pw
 rbxcjp.info
 rbxcorp.net
@@ -715441,6 +715493,8 @@ recume.ink
 recumegorservicesco.digital
 recuperaciondecartera.website
 recuperaciondecartera.xyz
+recuperacionpostjornal.info
+recuperacionpostjornho.info
 recuperacionvive.duckdns.org
 recuperaglobaldanfeonline.eastus.cloudapp.azure.com
 recuperandotuamor.com
@@ -720913,9 +720967,11 @@ report-q1ztc7mo2by4.pages.dev
 report-qkgv24rtbpzkyi.pages.dev
 report-qqcpvjwx9qe.pages.dev
 report-qtvwqoj1ico5x9u4a.pages.dev
+report-rate.com
 report-reed.gl.at.ply.gg
 report-rib1kwl18i.pages.dev
 report-rj1m00xxon3mpte.pages.dev
+report-robinhood.com
 report-roblox.com
 report-rvmsvjd11o3.pages.dev
 report-s1dmw4lixyy6ci.pages.dev
@@ -726518,6 +726574,7 @@ ring-2341rd.com
 ring-888-uma.com
 ring-cj.gl.at.ply.gg
 ring-staffing.gl.at.ply.gg
+ring.claims
 ring.dedspac.ru
 ring.ulitron.ru
 ring0.servequake.com
@@ -736798,6 +736855,8 @@ rutilo.no-ip.biz
 rutils.com
 rutilus.xyz
 rutin.ulitron.ru
+rutinasactivaslo.info
+rutinasactivassa.info
 rutinisinglevineyard.com
 rutipurukeonventures.digital
 rutithegde.ru
@@ -739511,6 +739570,7 @@ sa012my.noip.me
 sa123re.no-ip.org
 sa1656twcomet.chickenkiller.com
 sa1at.ru
+sa1atik.cn
 sa1casc18sa289c1.digital
 sa2.dieselmediterraneo.com
 sa2il.johnsimde.xyz
@@ -750935,6 +750995,7 @@ schuylercommonsapts.com
 schvhost.us
 schvostwindows.no-ip.biz
 schwa.ulitron.ru
+schwab-005.sbs
 schwab-auth.top
 schwab-fov.icu
 schwab-sign0naccess.icu
@@ -781918,6 +781979,7 @@ smartomnixinsight.click
 smartomnixpro.digital
 smartomnizone.click
 smartonboardingportal.com
+smartone-shop.info
 smartonebase.click
 smartonecapital.click
 smartoneflow.click
@@ -783376,6 +783438,7 @@ smtp.ruankpp.top
 smtp.safalife.com
 smtp.sartco-ir.com
 smtp.satellitebbs.com
+smtp.schwab-005.sbs
 smtp.shikato.ru
 smtp.shuyingbaofu.com
 smtp.siqanalytical.com
@@ -783830,6 +783893,7 @@ snap-okta.net
 snap-report.com
 snap-screening.com
 snap-short.online
+snap.report
 snap.tk
 snap.ulitron.ru
 snap6589.xyz
@@ -785671,6 +785735,7 @@ sofhersothat.com
 sofi-bank.com.co
 sofi-bank.to
 sofi-login.com.co
+sofi.claims
 sofi.lockerkup.com
 sofi90.con-ip.com
 sofia.virosat.ru
@@ -810663,6 +810728,8 @@ sueiodpel8713.xyz
 sueiuuoayyqwumei.xyz
 suel.top
 suelbekwj04q.date
+suenobienestarsq.info
+suenobienestarsw.info
 suentvector.digital
 sueqwwcaamusiiqa.xyz
 suerbald.com
@@ -811857,6 +811924,7 @@ sumskaqggwkuaqaw.xyz
 sumskwiksciwaigc.xyz
 sumsub-api.sync5.abrdns.com
 sumsub-dint.sync5.abrdns.com
+sumsub-report.com
 sumsub-static.sync5.abrdns.com
 sumsub.cloudbiz.top
 sumsub.offerup.digital
@@ -818973,6 +819041,7 @@ synchronize.pw
 synchronizeall.store
 synchronor.shop
 synchronous-lobes.site
+synchrony.claims
 synchronyfinanciai.com
 syncidea.info
 syncingg.icu
@@ -857314,6 +857383,7 @@ trineliorqua.com
 trinelovaxo.com
 trinervegenx.digital
 trinesoulrenewal.com
+trinet.add-mfa.com
 trinetinternal.com
 trinevector.click
 trinexolab.com
@@ -862932,6 +863002,7 @@ turnirbrawl.ru
 turniron-mound.xyz
 turnirottiktaka.ru
 turnitin-report.com
+turnitin.report
 turnkey-solutions.net
 turnkeyai.digital
 turnkeycre.com
@@ -878452,6 +878523,7 @@ unukatitical-postaradidom.name
 unukomofy-exohaxeth-antibixikussion.biz
 unulpg.info
 unum-hr.com
+unum.report
 unumai.digital
 unumalefy-micronikaly-interepafoty.name
 unumekihood.net
@@ -922083,6 +922155,7 @@ webmail.naveservice.site
 webmail.navmanager.site
 webmail.navportalservice.site
 webmail.navrcorp.site
+webmail.neukirchuzaouth.com
 webmail.newlaptopoffer.com
 webmail.news-bd.com
 webmail.newsonet.net
@@ -938663,6 +938736,7 @@ wrung-badges.space
 wrungzena.digital
 wruniesio.site
 wruriaaz.glendown.net
+wruser.org
 wrust.top
 wrvcbdoputfeyv.cfd
 wrvwr536uurwnrnwbrwr55rwrbrwrw6r6eyq5yyywbrwy.com
@@ -961820,6 +961894,7 @@ yapsweb3.com
 yapuceranevizion.com
 yapuhuhorinvestments.sbs
 yapv.top
+yapw.life
 yapwsgm.mp
 yaqabucabiumventures.sbs
 yaqahuaservices.digital
@@ -971079,6 +971154,7 @@ ysbllry.com
 ysbrbkf.com
 ysbsxyl.com
 yscceecmwiwomkao.xyz
+yscf988.club
 yscikevision.today
 yscrsopwxaamepeqh.su
 yscuqyyyeoiwgkiw.xyz
