@@ -19,18 +19,18 @@ Levels 1-8 are generated from one pinned `ipsum.txt` snapshot. Duplicate IPs are
 
 The source is the official `maltrail-malware-domains.txt` derived from Maltrail Trails `malware/` content.
 
-- Raw rows: 1,062,586
-- Unique domains after exact de-duplication: 1,062,586
+- Raw rows: 1,063,922
+- Unique domains after exact de-duplication: 1,063,922
 - Exact duplicate rows removed: 0
-- Redundant child suffixes removed: 145,604
-- Published `domain_suffix` entries: 916,982
+- Redundant child suffixes removed: 145,727
+- Published `domain_suffix` entries: 918,195
 
 Suffix compaction is label-aware: a child such as `a.example.com` is removed only when `example.com` itself exists in the source list. A string such as `badexample.com` is not considered a child of `example.com`.
 
 ## Source snapshots
 
 - IPsum commit: `84387a286db0ffd721f56e738482affbd2ca3bc1`
-- Maltrail Trails release: `content-20261019-2254`
+- Maltrail Trails release: `content-20261020-2218`
 - sing-box source rule-set version: `2`
 
 ## Files
