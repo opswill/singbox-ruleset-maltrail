@@ -73,15 +73,15 @@
   "maltrail_malware_domains": {
     "exact_duplicates_removed": 0,
     "full_text_file": "maltrail-malware-domains-full.txt",
-    "full_text_sha256": "fbe3d9592779a9e85da4a197f3461a66047239c27e0be4a548c5dcd418b02b8a",
-    "full_text_size": 20565881,
-    "published_domain_suffixes": 918468,
-    "raw_rows": 1064269,
-    "suffix_redundant_removed": 145801,
+    "full_text_sha256": "9bda46569eaf440278c28515df9c8d38a8e142e0043e1dd78d6c07620d3af676",
+    "full_text_size": 20624538,
+    "published_domain_suffixes": 921051,
+    "raw_rows": 1067852,
+    "suffix_redundant_removed": 146801,
     "text_file": "maltrail-malware-domains.txt",
-    "text_sha256": "d3619e5c09b0f4f52488cb96368990b8b8a30a1f421a91e316e16816f5980096",
-    "text_size": 17530049,
-    "unique_domains": 1064269
+    "text_sha256": "a0ad85ed2f6c8a368707af615256966205fe2b5305c8c28b1d85df9e10547541",
+    "text_size": 17571156,
+    "unique_domains": 1067852
   },
   "ruleset_source_format_version": 2,
   "sources": {
@@ -92,9 +92,9 @@
     },
     "maltrail_trails": {
       "asset": "maltrail-malware-domains.txt",
-      "release": "content-20261023-2212",
+      "release": "content-20261024-2137",
       "repository": "stamparm/trails",
-      "upstream_sha256": "67ce8f904352f8d1ffca4ceb460fa60ab22ff8aee5a3d9215bbfe4c843a8e29c"
+      "upstream_sha256": "dc41196490371befde5d9f4cf0c7866b9eb681a62706c2bd3a2a7672d30c211d"
     }
   }
 }
